@@ -67,7 +67,14 @@ export default function StationsTable() {
 
     return(<>
         <DataGrid
-            paginationModel={{ pageSize: 15, page: 0 }}
+            initialState={{
+                pagination: {
+                    paginationModel: {
+                        pageSize: 15,
+                        page: 0
+                    }
+                }
+            }}
             pageSizeOptions={[15, 25, 50, 100]}
             autoHeight rows={rows} columns={columns} />
     </>)

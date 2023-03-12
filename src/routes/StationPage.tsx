@@ -1,12 +1,13 @@
 import { Breadcrumbs, Fade, Grid, Paper, Skeleton, styled, Typography } from "@mui/material";
 import { useQueries, useQuery } from "react-query";
 import { MapContainer, TileLayer, useMap } from 'react-leaflet'
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { measurement, stations, water } from "../api";
 import Navigation from "../components/Navigation";
 
 import StraightenIcon from '@mui/icons-material/Straighten';
 import InfoBox from "../components/InfoBox";
+import BasePage from "../components/BasePage";
 
 export default function StationPage() {
 
@@ -36,12 +37,10 @@ export default function StationPage() {
         })
 
     return (
-        <>
-            <Navigation></Navigation>
-            <div style={{marginTop: "25px"}}></div>
-
+        <BasePage>
             <Breadcrumbs aria-label="breadcrumb">
-                <Typography color="text.primary">Station</Typography>
+                <Link to={"/"} color="text.primary">Stations</Link>
+                <Typography color="text.primary">{stationId}</Typography>
             </Breadcrumbs>
             <div style={{marginTop: "5px"}}></div>
             
@@ -64,6 +63,6 @@ export default function StationPage() {
                         {JSON.stringify(currentMeasurementQuery.data)}
                 </Grid>
             </Grid>
-        </>
+        </BasePage>
     )
 }
